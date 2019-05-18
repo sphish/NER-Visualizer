@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-label>Model</mat-label>
+      <mat-select placeholder="selectedModel"  [(ngModel)]="selectedModel" name="item">
+        <mat-option *ngFor="let c of models" [value]="c">
+          {{c.name}}
+        </mat-option>
+      </mat-select>
+</mat-form-field>
