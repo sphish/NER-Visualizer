@@ -5,7 +5,7 @@ export class Label {
 }
 
 export const LABELS: Label[] = [
-  {id: 0, name: 'Date', selected: true},
-  {id: 1, name: 'People', selected: true},
-  {id: 2, name: 'Company', selected: true}
+  {id: 0, name: 'DATE', selected: true},
+  {id: 1, name: 'PERSON', selected: true},
+  {id: 2, name: 'ORG', selected: true}
 ];

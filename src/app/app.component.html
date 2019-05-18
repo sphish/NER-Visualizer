@@ -5,6 +5,9 @@
     </mat-toolbar>
 
     <mat-card>
+      <mat-card-header>
+        <mat-card-title>Input Area</mat-card-title>
+      </mat-card-header>
         <div fxLayout="row" fxLayoutAlign="space-around stretch">
           <div fxFlex="60">
             <app-inputarea ></app-inputarea>
@@ -17,10 +20,14 @@
         </div>
     </mat-card>
 
-    <mat-card>
-      <app-outputarea></app-outputarea>
+    <mat-card style="text-align:left">
+      <mat-card-header>
+        <mat-card-title>Output Area</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <app-outputarea></app-outputarea>
+      </mat-card-content>
     </mat-card>
-
   </div>
 
 <router-outlet></router-outlet>
