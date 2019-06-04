@@ -1,0 +1,84 @@
+{
+  "data": {
+    "auth": {
+      "last-id": 0,
+      "users": null
+    },
+    "config": {
+      "core": {
+        "refresh": {
+          "hold": "2019-05-19T13:22:40.75314928Z"
+        },
+        "seed": {
+          "loaded": true
+        }
+      }
+    },
+    "fix-forced-devmode": 1,
+    "last-refresh-hints": "2019-05-19T04:22:40.753218901-07:00",
+    "patch-level": 6,
+    "patch-sublevel": 1,
+    "refresh-privacy-key": "s7Vrnj3C5FJC7vx9",
+    "seed-time": "2019-05-19T04:22:47.464898807-07:00",
+    "seeded": true
+  },
+  "changes": {
+    "1": {
+      "id": "1",
+      "kind": "seed",
+      "summary": "Initialize system state",
+      "status": 0,
+      "clean": true,
+      "task-ids": [
+        "2",
+        "1"
+      ],
+      "spawn-time": "2019-05-19T04:22:47.427940372-07:00",
+      "ready-time": "2019-05-19T04:22:47.473845342-07:00"
+    }
+  },
+  "tasks": {
+    "1": {
+      "id": "1",
+      "kind": "mark-seeded",
+      "summary": "Mark system seeded",
+      "status": 4,
+      "clean": true,
+      "wait-tasks": [
+        "2"
+      ],
+      "change": "1",
+      "spawn-time": "2019-05-19T04:22:47.418588162-07:00",
+      "ready-time": "2019-05-19T04:22:47.473843689-07:00",
+      "doing-time": 16923725
+    },
+    "2": {
+      "id": "2",
+      "kind": "run-hook",
+      "summary": "Run configure hook of \"core\" snap if present",
+      "status": 4,
+      "clean": true,
+      "data": {
+        "hook-setup": {
+          "snap": "core",
+          "revision": "unset",
+          "hook": "configure",
+          "optional": true,
+          "timeout": 300000000000,
+          "ignore-error": true,
+          "track-error": true
+        }
+      },
+      "halt-tasks": [
+        "1"
+      ],
+      "change": "1",
+      "spawn-time": "2019-05-19T04:22:47.427907281-07:00",
+      "ready-time": "2019-05-19T04:22:47.447302196-07:00",
+      "doing-time": 9376927
+    }
+  },
+  "last-change-id": 1,
+  "last-task-id": 2,
+  "last-lane-id": 0
+}

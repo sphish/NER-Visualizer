@@ -13,3 +13,72 @@ mat-toolbar-row {
   right: 20px;
   color: white;
 }
+
+[data-entity] {
+  line-height: 1;
+  display: inline-block;
+  background: transparent;
+  padding: 0 0.15em 0.15em 0.15em;
+  position: relative;
+  cursor: help;
+  border-bottom: 3px solid;
+}
+[data-entity]:after {
+  box-sizing: border-box;
+  content: attr(data-entity);
+  line-height: 1;
+  display: inline-block;
+  font-size: 0.65em;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: -1.5em;
+  left: 0;
+  transition: opacity 0.25s ease;
+}
+[data-entity][data-entity="person"] {
+  border-bottom-color: #f44d61;
+}
+[data-entity][data-entity="person"]:after {
+  color: #f44d61;
+}
+[data-entity][data-entity="person"] ~ [data-entity="person"]:after {
+  opacity: 0;
+}
+[data-entity][data-entity="person"] ~ [data-entity="person"]:hover:after {
+  opacity: 1;
+}
+[data-entity][data-entity="org"] {
+  border-bottom-color: #8e7dff;
+}
+[data-entity][data-entity="org"]:after {
+  color: #8e7dff;
+}
+[data-entity][data-entity="org"] ~ [data-entity="org"]:after {
+  opacity: 0;
+}
+[data-entity][data-entity="org"] ~ [data-entity="org"]:hover:after {
+  opacity: 1;
+}
+[data-entity][data-entity="date"] {
+  border-bottom-color: #2fbbab;
+}
+[data-entity][data-entity="date"]:after {
+  color: #2fbbab;
+}
+[data-entity][data-entity="date"] ~ [data-entity="date"]:after {
+  opacity: 0;
+}
+[data-entity][data-entity="date"] ~ [data-entity="date"]:hover:after {
+  opacity: 1;
+}
+
+.entities {
+  font: 18px/2.5 Arial, sans-serif;
+  padding: 25px 50px;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
