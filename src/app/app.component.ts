@@ -39,7 +39,12 @@ export class AppComponent implements OnInit {
       if (this.selectedModel) { form.append('model', this.selectedModel.name); } };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
         console.log('FileUpload:uploaded:', item, status, response);
-        alert('File uploaded successfully');
+        if (item.isSuccess === false) {
+          alert("Request Error!");
+        } else {
+          alert('File uploaded successfully');
+          this.render(response);
+        }
     };
   }
 
@@ -56,7 +61,6 @@ export class AppComponent implements OnInit {
   }
 
   recognize(): void {
-    this.showOutput = true;
     const content = {
       text: this.inputText,
       model: this.selectedModel.name,
@@ -66,7 +70,9 @@ export class AppComponent implements OnInit {
     console.log(this.http.post<string>('http://192.144.181.205:3000/work_text', content).subscribe(data => {
     // console.log(this.http.post<string>('http://localhost:5000/', content).subscribe(data => {
       this.render(data);
-    }));
+      this.showOutput = true;
+    },
+    error => alert("Request Error!")));
     // this.output = this.response["html"];
     console.log(this.output);
   }
