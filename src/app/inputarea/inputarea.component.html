@@ -5,7 +5,6 @@
     cols="80"
     [(ngModel)]="value"
     (ngModelChange)="change()"></textarea>
-  <button (click)="hello()">debug</button>
   <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
     <mat-icon>close</mat-icon>
   </button>

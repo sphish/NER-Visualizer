@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {MODELS} from './model';
 import {LABELS} from './label';
 import { InputService } from './input.service';
+import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -11,7 +12,7 @@ import { InputService } from './input.service';
   styleUrls: ['./app.component.styl']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'NER-Visualizer';
   showOutput = false;
   inputText: string;
@@ -23,6 +24,24 @@ export class AppComponent {
 
   labels = LABELS;
   selectedOptions = LABELS.map(l => l.name);
+
+  fileName = 'Choose File';
+  public uploader: FileUploader = new FileUploader({url: 'http://192.144.181.205:3000/work_file', itemAlias: 'file'});
+  // public uploader: FileUploader = new FileUploader({url: 'http://localhost:3000/api/upload', itemAlias: 'photo'});
+
+  ngOnInit() {
+    this.uploader.onAfterAddingFile = (file) => {
+      file.withCredentials = false;
+      this.fileName = file.file.name;
+      console.log(this.fileName);
+    };
+    this.uploader.onBuildItemForm = (fileItem: any, form: any) => {
+      if (this.selectedModel) { form.append('model', this.selectedModel.name); } };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+        console.log('FileUpload:uploaded:', item, status, response);
+        alert('File uploaded successfully');
+    };
+  }
 
   labelOptionChange(list) {
     this.selectedOptions = list.selectedOptions.selected.map(
@@ -41,12 +60,11 @@ export class AppComponent {
     var content = {
       text: this.inputText,
       model: this.selectedModel.name,
-      labels: this.selectedOptions
     };
     console.log(JSON.stringify(content));
 
     // this.http.get('http://127.0.0.1:5000/').subscribe(data => { this.response = data; });
-    console.log(this.http.post<string>('http://127.0.0.1:5000/', content).subscribe(data => { this.response = data; }));
+    console.log(this.http.post<string>('http://192.144.181.205:3000/work_text', content).subscribe(data => { this.response = data; }));
     // this.output = this.response["html"];
     console.log(this.response.html);
   }

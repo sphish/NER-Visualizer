@@ -10,12 +10,14 @@ import { MaterialModule } from './material.module';
 import { InputareaComponent } from './inputarea/inputarea.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SafeHtmlPipe } from './safehtml';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
     SafeHtmlPipe,
     AppComponent,
     InputareaComponent,
+    FileSelectDirective
   ],
   imports: [
     MatSelectModule,

@@ -12,7 +12,19 @@
         <div fxFlex="60">
           <app-inputarea ></app-inputarea>
           <div fxLayout="row" fxLayoutAlign="space-between center"> 
+            <button fxFlex="20" type="button" mat-button (click)="fileInput.click()">{{fileName}}</button>
+            <input type="file" hidden #fileInput name="file" ng2FileSelect [uploader]="uploader" />
+            <button mat-raised-button type="button" class="btn btn-success btn-s" 
+              (click)="uploader.uploadAll()" 
+              [disabled]="!uploader.getNotUploadedItems().length"
+              color="accent" >
+              Recognize from File
+            </button>
+            <button mat-raised-button color="primary" (click)="recognize()">Recognize</button>
+          </div>
+        </div>
 
+        <div fxFlex="25">
             <mat-form-field>
               <mat-label>Model</mat-label>
                   <mat-select placeholder="selectedModel"  [(ngModel)]="selectedModel" name="item">
@@ -21,25 +33,18 @@
                     </mat-option>
                   </mat-select>
             </mat-form-field>
-
-                <input class="ng-hide" id="input-file-id" multiple type="file" />
-                <label for="input-file-id" class="md-button md-raised md-primary">Choose Files</label>
-
-            <button mat-raised-button color="primary" (click)="recognize()">Recognize</button>
-          </div>
+          <mat-card mat-card-title="Labels">
+            Entity Labels
+            <mat-selection-list #list>
+              <mat-list-option *ngFor="let l of labels"
+                [value]="l.name"
+                [selected]="l.selected"
+                (click)="labelOptionChange(list)">
+                {{l.name}}
+              </mat-list-option>
+            </mat-selection-list>
+          </mat-card>
         </div>
-
-        <mat-card mat-card-title="Labels" fxFlex="25">
-          Entity Labels
-          <mat-selection-list #list>
-            <mat-list-option *ngFor="let l of labels"
-              [value]="l.name"
-              [selected]="l.selected"
-              (click)="labelOptionChange(list)">
-              {{l.name}}
-            </mat-list-option>
-          </mat-selection-list>
-        </mat-card>
       </div>
   </mat-card>
 

@@ -8,7 +8,7 @@ import { InputService } from '../input.service';
 })
 
 export class InputareaComponent implements OnInit {
-  @Input() value = 'test';
+  @Input() value = '';
 
   constructor(private inputService: InputService) {
     this.inputService.textMethod(this.value);
