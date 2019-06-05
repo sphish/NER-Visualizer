@@ -36,40 +36,52 @@ mat-toolbar-row {
   left: 0;
   transition: opacity 0.25s ease;
 }
-[data-entity][data-entity="person"] {
+[data-entity][data-entity="PER"] {
   border-bottom-color: #f44d61;
 }
-[data-entity][data-entity="person"]:after {
+[data-entity][data-entity="PER"]:after {
   color: #f44d61;
 }
-[data-entity][data-entity="person"] ~ [data-entity="person"]:after {
+[data-entity][data-entity="PER"] ~ [data-entity="PER"]:after {
   opacity: 0;
 }
-[data-entity][data-entity="person"] ~ [data-entity="person"]:hover:after {
+[data-entity][data-entity="PER"] ~ [data-entity="PER"]:hover:after {
   opacity: 1;
 }
-[data-entity][data-entity="org"] {
+[data-entity][data-entity="ORG"] {
   border-bottom-color: #8e7dff;
 }
-[data-entity][data-entity="org"]:after {
+[data-entity][data-entity="ORG"]:after {
   color: #8e7dff;
 }
-[data-entity][data-entity="org"] ~ [data-entity="org"]:after {
+[data-entity][data-entity="ORG"] ~ [data-entity="ORG"]:after {
   opacity: 0;
 }
-[data-entity][data-entity="org"] ~ [data-entity="org"]:hover:after {
+[data-entity][data-entity="ORG"] ~ [data-entity="ORG"]:hover:after {
   opacity: 1;
 }
-[data-entity][data-entity="date"] {
+[data-entity][data-entity="MIS"] {
   border-bottom-color: #2fbbab;
 }
-[data-entity][data-entity="date"]:after {
+[data-entity][data-entity="MIS"]:after {
   color: #2fbbab;
 }
-[data-entity][data-entity="date"] ~ [data-entity="date"]:after {
+[data-entity][data-entity="MIS"] ~ [data-entity="MIS"]:after {
   opacity: 0;
 }
-[data-entity][data-entity="date"] ~ [data-entity="date"]:hover:after {
+[data-entity][data-entity="MIS"] ~ [data-entity="MIS"]:hover:after {
+  opacity: 1;
+}
+[data-entity][data-entity="LOC"] {
+  border-bottom-color: #34ba65;
+}
+[data-entity][data-entity="LOC"]:after {
+  color: #2fbbab;
+}
+[data-entity][data-entity="LOC"] ~ [data-entity="LOC"]:after {
+  opacity: 0;
+}
+[data-entity][data-entity="LOC"] ~ [data-entity="LOC"]:hover:after {
   opacity: 1;
 }
 

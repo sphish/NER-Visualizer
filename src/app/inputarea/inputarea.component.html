@@ -1,7 +1,8 @@
 <mat-form-field style="width: 90%;">
   <textarea matInput placeholder="Input Text"
     mat-autosize="true"
-    matAutosizeMinRows="15"
+    matAutosizeMinRows="25"
+    maxlength="5000"
     cols="80"
     [(ngModel)]="value"
     (ngModelChange)="change()"></textarea>

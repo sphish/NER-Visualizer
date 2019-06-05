@@ -1,11 +1,11 @@
 export class Label {
-  id: number;
   name: string;
   selected: boolean;
 }
 
-export const LABELS: Label[] = [
-  {id: 0, name: 'DATE', selected: true},
-  {id: 1, name: 'PERSON', selected: true},
-  {id: 2, name: 'ORG', selected: true}
+export const LABELS = [
+  {name: 'LOC', selected: true},
+  {name: 'PER', selected: true},
+  {name: 'MIS', selected: true},
+  {name: 'ORG', selected: true},
 ];

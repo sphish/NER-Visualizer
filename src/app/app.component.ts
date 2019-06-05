@@ -63,8 +63,8 @@ export class AppComponent implements OnInit {
     };
     console.log(JSON.stringify(content));
 
-    console.log(this.http.post<string>('http://192.144.181.205:3000/work_text', content).subscribe(data => {
-    // console.log(this.http.post<string>('http://localhost:5000/', content).subscribe(data => {
+    // console.log(this.http.post<string>('http://192.144.181.205:3000/work_text', content).subscribe(data => {
+    console.log(this.http.post<string>('http://localhost:5000/', content).subscribe(data => {
       this.render(data);
     }));
     // this.output = this.response["html"];
@@ -78,10 +78,16 @@ export class AppComponent implements OnInit {
     let segments: any[] = [];
     const ents = data.ents;
     const len = ents.length;
+    const labels = this.selectedOptions.length;
+    console.log(this.selectedOptions);
     for (let i = 0; i < len; i++) {
-      segments.push([ents[i].start - cur, '']);
-      segments.push([ents[i].end - ents[i].start, ents[i].label]);
-      cur = ents[i].end;
+      for (let j = 0; j < labels; j++) {
+        if (this.selectedOptions[j] === ents[i].label) {
+          segments.push([ents[i].start - cur, '']);
+          segments.push([ents[i].end - ents[i].start, ents[i].label]);
+          cur = ents[i].end;
+        }
+      }
     }
     segments.push([text.length - cur, '']);
     console.log(segments);
