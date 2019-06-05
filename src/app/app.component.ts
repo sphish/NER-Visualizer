@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   showOutput = false;
   inputText: string;
 // tslint:disable-next-line: max-line-length
-  response: any;
+  output: string;
 
   models = MODELS;
   selectedModel = this.models[0];
@@ -63,10 +63,47 @@ export class AppComponent implements OnInit {
     };
     console.log(JSON.stringify(content));
 
-    // this.http.get('http://127.0.0.1:5000/').subscribe(data => { this.response = data; });
-    console.log(this.http.post<string>('http://192.144.181.205:3000/work_text', content).subscribe(data => { this.response = data; }));
+    console.log(this.http.post<string>('http://192.144.181.205:3000/work_text', content).subscribe(data => {
+    // console.log(this.http.post<string>('http://localhost:5000/', content).subscribe(data => {
+      this.render(data);
+    }));
     // this.output = this.response["html"];
-    console.log(this.response.html);
+    console.log(this.output);
+  }
+
+  render(data): void {
+    console.log(data);
+    const text = data.text;
+    let cur = 0;
+    let segments: any[] = [];
+    const ents = data.ents;
+    const len = ents.length;
+    for (let i = 0; i < len; i++) {
+      segments.push([ents[i].start - cur, '']);
+      segments.push([ents[i].end - ents[i].start, ents[i].label]);
+      cur = ents[i].end;
+    }
+    segments.push([text.length - cur, '']);
+    console.log(segments);
+
+    let html = '';
+    cur = 0;
+    const segs = segments.length;
+    for (let i = 0; i < segs; i++) {
+      const raw = text.substring(cur, cur + segments[i][0]);
+      cur += segments[i][0];
+      if (segments[i][1] === '') {
+        html += raw;
+      } else {
+        html += '<mark data-entity="';
+        html += segments[i][1];
+        html += '">';
+        html += raw;
+        html += '</mark>';
+      }
+    }
+    console.log(html);
+    this.output = html;
   }
 }
 
