@@ -1,9 +1,9 @@
-import { Component, NgModule, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {MODELS} from './model';
 import {LABELS} from './label';
 import { InputService } from './input.service';
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
 
   recognize(): void {
     this.showOutput = true;
-    var content = {
+    const content = {
       text: this.inputText,
       model: this.selectedModel.name,
     };
