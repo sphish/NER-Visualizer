@@ -39,11 +39,12 @@ export class AppComponent implements OnInit {
       if (this.selectedModel) { form.append('model', this.selectedModel.name); } };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
         console.log('FileUpload:uploaded:', item, status, response);
+        console.log(response);
         if (item.isSuccess === false) {
           alert("Request Error!");
         } else {
           alert('File uploaded successfully');
-          this.render(response);
+          this.render(JSON.parse(response));
         }
     };
   }
@@ -70,7 +71,6 @@ export class AppComponent implements OnInit {
     console.log(this.http.post<string>('http://192.144.181.205:3000/work_text', content).subscribe(data => {
     // console.log(this.http.post<string>('http://localhost:5000/', content).subscribe(data => {
       this.render(data);
-      this.showOutput = true;
     },
     error => alert("Request Error!")));
     // this.output = this.response["html"];
@@ -80,9 +80,11 @@ export class AppComponent implements OnInit {
   render(data): void {
     console.log(data);
     const text = data.text;
+    console.log(text);
     let cur = 0;
     let segments: any[] = [];
     const ents = data.ents;
+    console.log(ents)
     const len = ents.length;
     const labels = this.selectedOptions.length;
     console.log(this.selectedOptions);
@@ -116,6 +118,7 @@ export class AppComponent implements OnInit {
     }
     console.log(html);
     this.output = html;
+    this.showOutput = true;
   }
 }
 
