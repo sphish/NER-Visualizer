@@ -63,8 +63,8 @@ export class AppComponent implements OnInit {
     };
     console.log(JSON.stringify(content));
 
-    // console.log(this.http.post<string>('http://192.144.181.205:3000/work_text', content).subscribe(data => {
-    console.log(this.http.post<string>('http://localhost:5000/', content).subscribe(data => {
+    console.log(this.http.post<string>('http://192.144.181.205:3000/work_text', content).subscribe(data => {
+    // console.log(this.http.post<string>('http://localhost:5000/', content).subscribe(data => {
       this.render(data);
     }));
     // this.output = this.response["html"];
