@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
         if (item.isSuccess === false) {
           alert("Request Error!");
         } else {
-          alert('File uploaded successfully');
           this.render(JSON.parse(response));
         }
     };
@@ -79,6 +78,10 @@ export class AppComponent implements OnInit {
 
   render(data): void {
     console.log(data);
+    if (data.hasOwnProperty('errmsg')) {
+      alert(data.errmsg);
+      return ;
+    }
     const text = data.text;
     console.log(text);
     let cur = 0;
